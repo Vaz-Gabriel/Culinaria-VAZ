@@ -54,11 +54,52 @@ form textarea {
   font-size: 1rem;
 }
 
+/* Estilo dos itens do pedido */
 .item {
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-button {
+.item select,
+.item input.quantidade {
+  flex: 1;
+}
+
+.item button.removerItem {
+  flex: 0 0 auto;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+}
+
+.item button.removerItem:hover {
+  background-color: #c0392b;
+}
+
+/* Botão adicionar item */
+#adicionarItem {
+  background-color: #3498db;
+  color: whitesmoke;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 20px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#adicionarItem:hover {
+  background-color: #2980b9;
+}
+
+button#finalizar {
   background-color: #27ae60;
   color: whitesmoke;
   border: none;
@@ -70,7 +111,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button#finalizar:hover {
   background-color: #219150;
 }
 
