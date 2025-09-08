@@ -86,9 +86,7 @@ function finalizarPedido() {
 
   if(pagamento === "Pix"){
     const chavePix = "17988018700";
-    const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${total.toFixed(2)}%26name%3DCulinariaVAZ`;
     mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
-    mensagem += `%0A📷 *QR Code Pix:* ${pixURL}%0A`;
   }
 
   const numeroWhatsApp = '5517988018700';
