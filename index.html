@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culinária VAZ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <h1>Faça seu Pedido<br /><small>Rápido e Fácil!</small></h1>
+    <img src="logo.jpeg" alt="Logo Mestre do Sabor" class="logo" />
+    <form id="userForm">
+      <h2>Seus Dados</h2>
+      <input type="text" id="nome" placeholder="Nome completo" required />
+      <input type="tel" id="telefone" placeholder="Telefone com DDD" required />
+      <input type="text" id="endereco" placeholder="Endereço" required />
+      <input type="text" id="numero" placeholder="Número" required />
+
+      <h2>Cardápio</h2>
+
+      <div class="item">
+        <label>DOBRADINHA:</label>
+        <select id="dobradinha">
+          <option value="">Selecione</option>
+          <option value="Dobradinha M">M - R$25,00</option>
+          <option value="Dobradinha G">G - R$45,00</option>
+        </select>
+      </div>
+
+      <label for="obs">Observações:</label>
+      <textarea id="obs" placeholder="Ex: Sem pimenta, sem cebola..."></textarea>
+
+      <div id="total">Total:</div>
+
+      <button type="button" onclick="finalizarPedido()">Finalizar Pedido</button>
+    </form>
+
+    <footer>
+      <p>📞 Disk Encomenda: (17) 9.8801-8700</p>
+      <p>💳 Aceitamos CARTÃO</p>
+      <p>💰 Pix (17) 9.8801-8700</p>
+      <p>📍 Viradouro/SP</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
