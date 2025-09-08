@@ -6,11 +6,10 @@ body {
   color: #333;
 }
 
-/* Logo */
 .logo {
   display: block;
   margin: 0 auto 10px auto; 
-  max-width: 110px; 
+  max-width: 120px; 
   height: auto;
 }
 
@@ -20,18 +19,18 @@ body {
   padding: 2rem;
   background-color: #ccc;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
 
 h1 {
   text-align: center;
-  color: #000000;
+  color: #000;
   margin-bottom: 0.2rem;
 }
 h1 small {
   font-weight: normal;
   font-size: 1rem;
-  color: #000000;
+  color: #000;
   display: block;
   margin-top: 4px;
 }
@@ -45,12 +44,12 @@ form input,
 form select,
 form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 14px;
   margin: 0.5rem 0;
-  border-radius: 10px;
-  border: 1px solid #333333;
-  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid #333;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 /* Itens do pedido */
@@ -59,28 +58,28 @@ form textarea {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  flex-wrap: wrap; /* permite quebrar linha no celular */
+  flex-wrap: wrap; /* empilha no celular */
 }
 
 .item select,
 .item input.quantidade {
-  flex: 1 1 100%; /* ocupa toda largura em telas pequenas */
-  min-width: 120px; 
-  padding: 12px; 
+  flex: 1 1 100%; /* ocupa toda largura no mobile */
+  min-width: 140px;
+  padding: 14px;
   font-size: 1rem;
   box-sizing: border-box;
 }
 
 .item input.quantidade {
-  max-width: 80px;
+  max-width: 100px;
 }
 
 .item button.removerItem {
   flex: 0 0 auto;
   background-color: #e74c3c;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   font-size: 18px;
   line-height: 1;
   padding: 0;
@@ -96,7 +95,7 @@ form textarea {
   background-color: #3498db;
   color: whitesmoke;
   border: none;
-  padding: 12px;
+  padding: 14px;
   width: 100%;
   font-size: 16px;
   border-radius: 20px;
@@ -113,7 +112,7 @@ button#finalizar {
   background-color: #27ae60;
   color: whitesmoke;
   border: none;
-  padding: 12px;
+  padding: 14px;
   width: 100%;
   font-size: 16px;
   border-radius: 20px;
