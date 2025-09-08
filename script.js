@@ -3,6 +3,8 @@ const valores = {
   'Dobradinha G': 45,
 };
 
+const chavePix = "17988018700"; // 🔑 chave PIX copia e cola
+
 function calcularTotal() {
   const dobradinha = document.getElementById('dobradinha').value;
   const total = valores[dobradinha] || 0;
@@ -22,6 +24,7 @@ function finalizarPedido() {
   const endereco = document.getElementById('endereco').value.trim();
   const numero = document.getElementById('numero').value.trim();
   const dobradinha = document.getElementById('dobradinha').value;
+  const pagamento = document.getElementById('pagamento').value;
   const total = calcularTotal();
 
   if (!dobradinha) {
@@ -34,12 +37,23 @@ function finalizarPedido() {
     return;
   }
 
+  if (!pagamento) {
+    alert("Por favor, selecione a forma de pagamento.");
+    return;
+  }
+
   let mensagem = `*👨🏻‍🍳 Pedido - Culinária VAZ*%0A`;
   mensagem += `👤 *Nome:* ${nome}%0A`;
   mensagem += `📞 *Telefone:* ${telefone}%0A`;
   mensagem += `📍 *Endereço:* ${endereco}, ${numero}%0A%0A`;
   mensagem += `*🧾 Itens:*%0A- ${dobradinha}%0A`;
   mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
+  mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
+
+  // Se for Pix, já inclui a chave copia e cola
+  if (pagamento === "Pix") {
+    mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
+  }
 
   const numeroWhatsApp = '5517988018700';
   const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
