@@ -8,8 +8,8 @@ body {
 
 .logo {
   display: block;
-  margin: 0 auto 10px auto; 
-  max-width: 120px; 
+  margin: 0 auto 10px auto;
+  max-width: 110px;
   height: auto;
 }
 
@@ -19,126 +19,38 @@ body {
   padding: 2rem;
   background-color: #ccc;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1 {
-  text-align: center;
-  color: #000;
-  margin-bottom: 0.2rem;
-}
-h1 small {
-  font-weight: normal;
-  font-size: 1rem;
-  color: #000;
-  display: block;
-  margin-top: 4px;
-}
+h1 { text-align: center; color: #000; margin-bottom: 0.2rem; }
+h1 small { font-weight: normal; font-size: 1rem; color: #000; display: block; margin-top: 4px; }
+h2 { margin-top: 2rem; color: #FF6400; }
 
-h2 {
-  margin-top: 2rem;
-  color: #FF6400;
-}
-
-form input,
-form select,
-form textarea {
+form input, form select {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   margin: 0.5rem 0;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid #333;
   font-size: 1rem;
   box-sizing: border-box;
 }
 
-/* Itens do pedido */
-.item {
-  margin-top: 1rem;
+#itensContainer .item {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  margin-top: 0.5rem;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeIn 0.3s forwards;
 }
 
-.item select,
-.item input.quantidade {
-  flex: 1 1 100%;
-  min-width: 140px;
-  padding: 14px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
+#itensContainer select { flex: 1 1 60%; }
+#itensContainer input.quantidade { flex: 1 1 30%; min-width: 60px; }
 
-.item input.quantidade {
-  max-width: 100px;
-}
-
-.item button.removerItem {
-  flex: 0 0 auto;
-  background-color: #e74c3c;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  font-size: 18px;
-  line-height: 1;
-  padding: 0;
-  margin-top: 0.3rem;
-  cursor: pointer;
-}
-
-.item button.removerItem:hover {
-  background-color: #c0392b;
-}
-
-/* Animação */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.item.removing {
-  animation: fadeOut 0.3s forwards;
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translateY(-20px);
-    height: 0;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* Botão adicionar item */
-#adicionarItem {
-  background-color: #3498db;
-  color: whitesmoke;
-  border: none;
-  padding: 14px;
-  width: 100%;
-  font-size: 16px;
-  border-radius: 20px;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
-#adicionarItem:hover {
-  background-color: #2980b9;
-}
-
-/* Botão finalizar */
-button#finalizar {
+button {
   background-color: #27ae60;
   color: whitesmoke;
   border: none;
-  padding: 14px;
+  padding: 12px;
   width: 100%;
   font-size: 16px;
   border-radius: 20px;
@@ -146,28 +58,12 @@ button#finalizar {
   cursor: pointer;
 }
 
-button#finalizar:hover {
-  background-color: #219150;
-}
+button:hover { background-color: #219150; }
 
-#total {
-  margin-top: 1rem;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  color: #FF6400;
-}
+#adicionarItem { background-color: #3498db; }
+#adicionarItem:hover { background-color: #2980b9; }
 
-footer {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid whitesmoke;
-  font-size: 0.9rem;
-  color: black;
-  line-height: 1.5;
-  text-align: center;
-}
+#total { margin-top: 1rem; font-size: 22px; font-weight: bold; text-align: center; color: #FF6400; }
 
-footer p {
-  margin: 6px 0;
-}
+footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid whitesmoke; font-size: 0.9rem; text-align: center; color: black; }
+footer p { margin: 6px 0; }
