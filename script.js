@@ -1,50 +1,48 @@
-const valores = {
-  'Dobradinha M': 25,
-  'Dobradinha G': 45,
-};
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culinária VAZ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
 
-function calcularTotal() {
-  const dobradinha = document.getElementById('dobradinha').value;
-  const total = valores[dobradinha] || 0;
+    <h1>Faça seu Pedido<br /><small>Rápido e Fácil!</small></h1>
+    <img src="logo.jpeg" alt="Logo Culinária VAZ" class="logo" />
 
-  document.getElementById('total').innerText = "R$ " + total.toFixed(2);
-  return total;
-}
+    <form id="userForm" onsubmit="return false;">
+      <h2>Seus Dados</h2>
+      <input type="text" id="nome" placeholder="Nome completo" required />
+      <input type="tel" id="telefone" placeholder="Telefone com DDD" required />
+      <input type="text" id="endereco" placeholder="Endereço" required />
+      <input type="text" id="numero" placeholder="Número" required />
 
-document.getElementById('dobradinha').addEventListener('change', calcularTotal);
+      <h2>Cardápio</h2>
 
-function finalizarPedido() {
-  const nome = document.getElementById('nome').value.trim();
-  const telefone = document.getElementById('telefone').value.trim();
-  const endereco = document.getElementById('endereco').value.trim();
-  const numero = document.getElementById('numero').value.trim();
-  const dobradinha = document.getElementById('dobradinha').value;
-  const obs = document.getElementById('obs') ? document.getElementById('obs').value.trim() : ""; // campo observações (se existir)
-  const total = calcularTotal();
+      <div class="item">
+        <label for="dobradinha">DOBRADINHA:</label>
+        <select id="dobradinha">
+          <option value="">Selecione</option>
+          <option value="Dobradinha M">M - R$25,00</option>
+          <option value="Dobradinha G">G - R$45,00</option>
+        </select>
+      </div>
 
-  if (!dobradinha) {
-    alert("Por favor, selecione pelo menos 1 item do cardápio.");
-    return;
-  }
+      <div id="total">Total: R$ 0,00</div>
 
-  if (!nome || !telefone || !endereco || !numero) {
-    alert("Por favor, preencha todos os dados.");
-    return;
-  }
+      <button id="finalizar" type="button">Finalizar Pedido</button>
+    </form>
 
-  let mensagem = `*👨🏻‍🍳 Pedido - Culinária VAZ*%0A`;
-  mensagem += `👤 *Nome:* ${nome}%0A`;
-  mensagem += `📞 *Telefone:* ${telefone}%0A`;
-  mensagem += `📍 *Endereço:* ${endereco}, ${numero}%0A%0A`;
+    <footer>
+      <p>📞 Disk Encomenda: (17) 9.8801-8700</p>
+      <p>💳 Aceitamos CARTÃO</p>
+      <p>💰 Pix (17) 9.8801-8700</p>
+      <p>📍 Viradouro/SP</p>
+    </footer>
+  </div>
 
-  mensagem += `*🧾 Itens:*%0A`;
-  if (dobradinha) mensagem += `- ${dobradinha}%0A`;
-
-  if (obs) mensagem += `%0A*📝 Observações:* ${obs}%0A`;
-
-  mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
-
-  const numeroWhatsApp = '5517988018700';
-  const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
-  window.open(url, '_blank');
-}
+  <script src="script.js"></script>
+</body>
+</html>
