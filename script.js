@@ -9,9 +9,11 @@ const nomeEmpresa = "CulinariaVAZ";
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('itensContainer');
 
+  // Atualiza total ao mudar dropdown ou quantidade
   container.addEventListener('change', calcularTotal);
   container.addEventListener('input', calcularTotal);
 
+  // Adicionar novo item
   document.getElementById('adicionarItem').addEventListener('click', () => {
     const itemTemplate = document.createElement('div');
     itemTemplate.classList.add('item');
@@ -26,15 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
       <button type="button" class="removerItem">❌</button>
     `;
     container.appendChild(itemTemplate);
+
+    // Garante animação fadeIn
+    setTimeout(() => {
+      itemTemplate.style.opacity = '1';
+      itemTemplate.style.transform = 'translateY(0)';
+    }, 10);
   });
 
+  // Remover item com animação
   container.addEventListener('click', (e) => {
     if (e.target.classList.contains('removerItem')) {
-      e.target.parentElement.remove();
-      calcularTotal();
+      const item = e.target.parentElement;
+      item.classList.add('removing');
+      item.addEventListener('animationend', () => {
+        item.remove();
+        calcularTotal();
+      });
     }
   });
 
+  // Finalizar pedido
   document.getElementById('finalizar').addEventListener('click', finalizarPedido);
 });
 
@@ -77,9 +91,7 @@ function finalizarPedido() {
   items.forEach(item => {
     const dobradinha = item.querySelector('.dobradinha').value;
     const quantidade = parseInt(item.querySelector('.quantidade').value) || 0;
-    if (dobradinha && quantidade > 0) {
-      listaItens += `- ${dobradinha} x${quantidade}%0A`;
-    }
+    if (dobradinha && quantidade > 0) listaItens += `- ${dobradinha} x${quantidade}%0A`;
   });
 
   if (!listaItens) {
@@ -95,6 +107,7 @@ function finalizarPedido() {
   mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
   mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
 
+  // Adiciona QR Pix se pagamento for Pix
   if (pagamento === "Pix") {
     const valorPix = total.toFixed(2);
     const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${valorPix}%26name%3D${encodeURIComponent(nomeEmpresa)}`;
