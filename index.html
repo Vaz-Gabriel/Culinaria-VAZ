@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="container">
-
     <h1>Faça seu Pedido<br /><small>Rápido e Fácil!</small></h1>
     <img src="logo.jpeg" alt="Logo Culinária VAZ" class="logo" />
 
@@ -20,14 +19,21 @@
       <input type="text" id="numero" placeholder="Número" required />
 
       <h2>Cardápio</h2>
-      <div class="item">
-        <label for="dobradinha">DOBRADINHA:</label>
-        <select id="dobradinha">
-          <option value="">Selecione</option>
-          <option value="Dobradinha M">M - R$25,00</option>
-          <option value="Dobradinha G">G - R$45,00</option>
-        </select>
+      <div id="itensContainer">
+        <!-- Um item de pedido padrão -->
+        <div class="item">
+          <label>DOBRADINHA:</label>
+          <select class="dobradinha">
+            <option value="">Selecione</option>
+            <option value="Dobradinha M">M - R$25,00</option>
+            <option value="Dobradinha G">G - R$45,00</option>
+          </select>
+          <input type="number" class="quantidade" min="1" value="1" />
+          <button type="button" class="removerItem">❌</button>
+        </div>
       </div>
+
+      <button type="button" id="adicionarItem">➕ Adicionar outro item</button>
 
       <div id="total">Total: R$ 0,00</div>
 
@@ -42,9 +48,9 @@
     </form>
 
     <footer>
-      <p>📞 Disk Encomenda: (17) 9.8801-8700</p>
+      <p>📞 Disk Encomenda: (17) 98801-8700</p>
       <p>💳 Aceitamos CARTÃO</p>
-      <p>💰 Pix (17) 9.8801-8700</p>
+      <p>💰 Pix (17) 988018700</p>
       <p>📍 Viradouro/SP</p>
     </footer>
   </div>
