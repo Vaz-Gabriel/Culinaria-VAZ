@@ -83,11 +83,11 @@ function finalizarPedido() {
   mensagem += `*🧾 Itens:*%0A${listaItens}`;
   mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
   mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
-
+  
   if(pagamento === "Pix"){
-    const chavePix = "17988018700";
-    mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
-  }
+  const chavePix = "17988018700";
+  mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
+}
 
   const numeroWhatsApp = '5517988018700';
   const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
