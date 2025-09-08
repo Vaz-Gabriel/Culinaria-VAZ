@@ -3,7 +3,8 @@ const valores = {
   'Dobradinha G': 45,
 };
 
-const chavePix = "17988018700"; // 🔑 chave PIX copia e cola
+const chavePix = "17988018700"; // chave Pix
+const nomeEmpresa = "CulinariaVAZ"; // opcional para QR
 
 function calcularTotal() {
   const dobradinha = document.getElementById('dobradinha').value;
@@ -50,9 +51,13 @@ function finalizarPedido() {
   mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
   mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
 
-  // Se for Pix, já inclui a chave copia e cola
   if (pagamento === "Pix") {
+    // Gerar QR Code via API externa
+    const valorPix = total.toFixed(2); // valor total do pedido
+    const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${valorPix}%26name%3D${encodeURIComponent(nomeEmpresa)}`;
+    
     mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
+    mensagem += `%0A📷 *QR Code Pix:* ${pixURL}%0A`;
   }
 
   const numeroWhatsApp = '5517988018700';
