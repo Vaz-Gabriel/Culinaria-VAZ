@@ -22,3 +22,11 @@ Tudo isso de forma **simples, rápida e intuitiva**, pensado para oferecer prati
 - Cálculo automático do valor total do pedido  
 - Envio do pedido via link direto para o WhatsApp  
 - Layout simples e responsivo para facilitar o uso em dispositivos móveis 
+
+---
+
+## 👨‍💻 Desenvolvedor
+
+| Nome     | GitHub                           |
+|----------|----------------------------------|
+| Gabriel Franco Vaz | [@Vaz-Gabriel](https://github.com/Vaz-Gabriel) |
