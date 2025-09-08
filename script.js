@@ -19,11 +19,15 @@ function finalizarPedido() {
   const endereco = document.getElementById('endereco').value;
   const numero = document.getElementById('numero').value;
   const dobradinha = document.getElementById('dobradinha').value;
-  const obs = document.getElementById('obs').value;
   const total = calcularTotal();
 
   if (!dobradinha) {
     alert("Por favor, selecione pelo menos 1 item do cardápio.");
+    return;
+  }
+
+    if (!nome, !telefone, !endereco, !numero) {
+    alert("Por favor, preencha os dados.");
     return;
   }
 
@@ -34,7 +38,6 @@ function finalizarPedido() {
 
   mensagem += `*🧾 Itens:*%0A`;
   if (dobradinha) mensagem += `- ${dobradinha}%0A`;
-  if (obs.trim() !== '') {
     mensagem += `%0A*📝 Observações:* ${obs.trim()}%0A`;
   }
 
