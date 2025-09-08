@@ -1,4 +1,3 @@
-/* style.css */
 body {
   font-family: Arial, sans-serif;
   background-color: #333333;
@@ -54,17 +53,26 @@ form textarea {
   font-size: 1rem;
 }
 
-/* Estilo dos itens do pedido */
+/* Itens do pedido */
 .item {
   margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap; /* permite quebrar linha no celular */
 }
 
 .item select,
 .item input.quantidade {
-  flex: 1;
+  flex: 1 1 100%; /* ocupa toda largura em telas pequenas */
+  min-width: 120px; 
+  padding: 12px; 
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.item input.quantidade {
+  max-width: 80px;
 }
 
 .item button.removerItem {
@@ -76,6 +84,7 @@ form textarea {
   font-size: 18px;
   line-height: 1;
   padding: 0;
+  margin-top: 0.3rem;
 }
 
 .item button.removerItem:hover {
@@ -99,6 +108,7 @@ form textarea {
   background-color: #2980b9;
 }
 
+/* Botão finalizar */
 button#finalizar {
   background-color: #27ae60;
   color: whitesmoke;
