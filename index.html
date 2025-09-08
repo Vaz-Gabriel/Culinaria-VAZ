@@ -17,18 +17,18 @@
       <input type="tel" id="telefone" placeholder="Telefone com DDD" required />
       <input type="text" id="endereco" placeholder="Endereço" required />
       <input type="text" id="numero" placeholder="Número" required />
-
+      
       <h2>Cardápio</h2>
       <div id="itensContainer">
-        <div class="item">
-          <h1>Dobradinha:</h1>
-          <select class="dobradinha">
-            <option value="">Selecione</option>
-            <option value="Dobradinha M">M - R$25,00</option>
-            <option value="Dobradinha G">G - R$45,00</option>
-          </select>
-          <input type="number" class="quantidade" min="1" value="1" />
-        </div>
+      <div class="item">
+        <label for="dobradinha">Dobradinha:</label><br>
+        <select id="dobradinha" class="dobradinha">
+          <option value="">Selecione</option>
+          <option value="Dobradinha M">M - R$25,00</option>
+          <option value="Dobradinha G">G - R$45,00</option>
+        </select>
+        <input type="number" class="quantidade" min="1" value="1" />
+      </div>
       </div>
 
       <button type="button" id="adicionarItem">➕ Adicionar outro item</button>
