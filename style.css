@@ -22,11 +22,36 @@ body {
   box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
 
-h1 { text-align: center; color: #000; margin-bottom: 0.2rem; }
-h1 small { font-weight: normal; font-size: 1rem; color: #000; display: block; margin-top: 4px; }
-h2 { margin-top: 1.5rem; color: #FF6400; }
+h1 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 0.2rem;
+}
 
-form input, form select {
+h1 small {
+  font-weight: normal;
+  font-size: 1rem;
+  color: #000;
+  display: block;
+  margin-top: 4px;
+}
+
+h2 {
+  margin-top: 1.5rem;
+  color: #FF6400;
+}
+
+/* Label personalizada */
+.label-prato {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #FF6400; /* mesma cor do título "Cardápio" */
+}
+
+form input,
+form select {
   width: 100%;
   padding: 14px;
   margin: 0.5rem 0;
@@ -37,14 +62,23 @@ form input, form select {
 }
 
 #itensContainer .item {
-  display: flex;
-  gap: 0.5rem;
   margin-top: 0.5rem;
-  flex-wrap: wrap;
 }
 
-#itensContainer select { flex: 1 1 60%; font-size: 1rem; padding: 12px; }
-#itensContainer input.quantidade { flex: 1 1 30%; min-width: 60px; font-size: 1rem; padding: 12px; }
+/* Ajuste para select e quantidade lado a lado */
+#itensContainer select {
+  width: 68%;
+  font-size: 1rem;
+  padding: 12px;
+  margin-right: 2%;
+}
+
+#itensContainer input.quantidade {
+  width: 30%;
+  min-width: 60px;
+  font-size: 1rem;
+  padding: 12px;
+}
 
 button {
   border: none;
@@ -60,13 +94,17 @@ button {
   background-color: #3498db;
   color: #fff;
 }
-#adicionarItem:hover { background-color: #2980b9; }
+#adicionarItem:hover {
+  background-color: #2980b9;
+}
 
 #finalizar {
   background-color: #27ae60;
   color: #fff;
 }
-#finalizar:hover { background-color: #219150; }
+#finalizar:hover {
+  background-color: #219150;
+}
 
 #itensContainer button.removerItem {
   background-color: #e74c3c;
@@ -78,9 +116,26 @@ button {
   padding: 0;
   margin-top: 0.3rem;
 }
-#itensContainer button.removerItem:hover { background-color: #c0392b; }
+#itensContainer button.removerItem:hover {
+  background-color: #c0392b;
+}
 
-#total { margin-top: 1rem; font-size: 22px; font-weight: bold; text-align: center; color: #FF6400; }
+#total {
+  margin-top: 1rem;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  color: #FF6400;
+}
 
-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid whitesmoke; font-size: 0.9rem; text-align: center; color: black; }
-footer p { margin: 6px 0; }
+footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid whitesmoke;
+  font-size: 0.9rem;
+  text-align: center;
+  color: black;
+}
+footer p {
+  margin: 6px 0;
+}
