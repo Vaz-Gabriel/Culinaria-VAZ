@@ -10,8 +10,9 @@
   <div class="container">
 
     <h1>Faça seu Pedido<br /><small>Rápido e Fácil!</small></h1>
-    <img src="logo.jpeg" alt="Logo Mestre do Sabor" class="logo" />
-    <form id="userForm">
+    <img src="logo.jpeg" alt="Logo Culinária VAZ" class="logo" />
+
+    <form id="userForm" onsubmit="return false;">
       <h2>Seus Dados</h2>
       <input type="text" id="nome" placeholder="Nome completo" required />
       <input type="tel" id="telefone" placeholder="Telefone com DDD" required />
@@ -21,16 +22,17 @@
       <h2>Cardápio</h2>
 
       <div class="item">
-        <label>DOBRADINHA:</label>
+        <label for="dobradinha">DOBRADINHA:</label>
         <select id="dobradinha">
           <option value="">Selecione</option>
           <option value="Dobradinha M">M - R$25,00</option>
           <option value="Dobradinha G">G - R$45,00</option>
         </select>
       </div>
-      <div id="total">Total:</div>
 
-      <button type="button" onclick="finalizarPedido()">Finalizar Pedido</button>
+      <div id="total">Total: R$ 0,00</div>
+
+      <button id="finalizar" type="button">Finalizar Pedido</button>
     </form>
 
     <footer>
