@@ -9,11 +9,9 @@ const nomeEmpresa = "CulinariaVAZ";
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('itensContainer');
 
-  // Calcular total ao mudar qualquer dropdown ou quantidade
   container.addEventListener('change', calcularTotal);
   container.addEventListener('input', calcularTotal);
 
-  // Adicionar novo item
   document.getElementById('adicionarItem').addEventListener('click', () => {
     const itemTemplate = document.createElement('div');
     itemTemplate.classList.add('item');
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(itemTemplate);
   });
 
-  // Remover item
   container.addEventListener('click', (e) => {
     if (e.target.classList.contains('removerItem')) {
       e.target.parentElement.remove();
@@ -38,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Finalizar pedido
   document.getElementById('finalizar').addEventListener('click', finalizarPedido);
 });
 
@@ -80,4 +76,33 @@ function finalizarPedido() {
   let listaItens = '';
   items.forEach(item => {
     const dobradinha = item.querySelector('.dobradinha').value;
-    const quantidade = parseInt(item
+    const quantidade = parseInt(item.querySelector('.quantidade').value) || 0;
+    if (dobradinha && quantidade > 0) {
+      listaItens += `- ${dobradinha} x${quantidade}%0A`;
+    }
+  });
+
+  if (!listaItens) {
+    alert("Por favor, selecione pelo menos 1 item do cardápio.");
+    return;
+  }
+
+  let mensagem = `*👨🏻‍🍳 Pedido - Culinária VAZ*%0A`;
+  mensagem += `👤 *Nome:* ${nome}%0A`;
+  mensagem += `📞 *Telefone:* ${telefone}%0A`;
+  mensagem += `📍 *Endereço:* ${endereco}, ${numero}%0A%0A`;
+  mensagem += `*🧾 Itens:*%0A${listaItens}`;
+  mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
+  mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
+
+  if (pagamento === "Pix") {
+    const valorPix = total.toFixed(2);
+    const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${valorPix}%26name%3D${encodeURIComponent(nomeEmpresa)}`;
+    mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
+    mensagem += `%0A📷 *QR Code Pix:* ${pixURL}%0A`;
+  }
+
+  const numeroWhatsApp = '5517988018700';
+  const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+  window.open(url, '_blank');
+}
