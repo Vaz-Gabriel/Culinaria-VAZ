@@ -3,22 +3,16 @@ const valores = {
   'Dobradinha G': 45,
 };
 
-const chavePix = "17988018700";
-const nomeEmpresa = "CulinariaVAZ";
-
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById('itensContainer');
 
-  // Atualiza total ao mudar dropdown ou quantidade
   container.addEventListener('change', calcularTotal);
   container.addEventListener('input', calcularTotal);
 
-  // Adicionar novo item
   document.getElementById('adicionarItem').addEventListener('click', () => {
-    const itemTemplate = document.createElement('div');
-    itemTemplate.classList.add('item');
-    itemTemplate.innerHTML = `
-      <label>DOBRADINHA:</label>
+    const novoItem = document.createElement('div');
+    novoItem.classList.add('item');
+    novoItem.innerHTML = `
       <select class="dobradinha">
         <option value="">Selecione</option>
         <option value="Dobradinha M">M - R$25,00</option>
@@ -27,43 +21,27 @@ document.addEventListener("DOMContentLoaded", () => {
       <input type="number" class="quantidade" min="1" value="1" />
       <button type="button" class="removerItem">❌</button>
     `;
-    container.appendChild(itemTemplate);
-
-    // Garante animação fadeIn
-    setTimeout(() => {
-      itemTemplate.style.opacity = '1';
-      itemTemplate.style.transform = 'translateY(0)';
-    }, 10);
+    container.appendChild(novoItem);
   });
 
-  // Remover item com animação
   container.addEventListener('click', (e) => {
-    if (e.target.classList.contains('removerItem')) {
-      const item = e.target.parentElement;
-      item.classList.add('removing');
-      item.addEventListener('animationend', () => {
-        item.remove();
-        calcularTotal();
-      });
+    if(e.target.classList.contains('removerItem')){
+      e.target.parentElement.remove();
+      calcularTotal();
     }
   });
 
-  // Finalizar pedido
   document.getElementById('finalizar').addEventListener('click', finalizarPedido);
 });
 
 function calcularTotal() {
   const items = document.querySelectorAll('#itensContainer .item');
   let total = 0;
-
   items.forEach(item => {
     const dobradinha = item.querySelector('.dobradinha').value;
     const quantidade = parseInt(item.querySelector('.quantidade').value) || 0;
-    if (dobradinha) {
-      total += (valores[dobradinha] || 0) * quantidade;
-    }
+    if(dobradinha) total += (valores[dobradinha] || 0) * quantidade;
   });
-
   document.getElementById('total').innerText = "Total: R$ " + total.toFixed(2).replace('.', ',');
   return total;
 }
@@ -76,12 +54,11 @@ function finalizarPedido() {
   const pagamento = document.getElementById('pagamento').value;
   const total = calcularTotal();
 
-  if (!nome || !telefone || !endereco || !numero) {
+  if(!nome || !telefone || !endereco || !numero){
     alert("Por favor, preencha todos os dados.");
     return;
   }
-
-  if (!pagamento) {
+  if(!pagamento){
     alert("Por favor, selecione a forma de pagamento.");
     return;
   }
@@ -91,10 +68,10 @@ function finalizarPedido() {
   items.forEach(item => {
     const dobradinha = item.querySelector('.dobradinha').value;
     const quantidade = parseInt(item.querySelector('.quantidade').value) || 0;
-    if (dobradinha && quantidade > 0) listaItens += `- ${dobradinha} x${quantidade}%0A`;
+    if(dobradinha && quantidade > 0) listaItens += `- ${dobradinha} x${quantidade}%0A`;
   });
 
-  if (!listaItens) {
+  if(!listaItens){
     alert("Por favor, selecione pelo menos 1 item do cardápio.");
     return;
   }
@@ -107,10 +84,9 @@ function finalizarPedido() {
   mensagem += `%0A💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}%0A`;
   mensagem += `💳 *Pagamento:* ${pagamento}%0A`;
 
-  // Adiciona QR Pix se pagamento for Pix
-  if (pagamento === "Pix") {
-    const valorPix = total.toFixed(2);
-    const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${valorPix}%26name%3D${encodeURIComponent(nomeEmpresa)}`;
+  if(pagamento === "Pix"){
+    const chavePix = "17988018700";
+    const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pix%3A${chavePix}%3Famount%3D${total.toFixed(2)}%26name%3DCulinariaVAZ`;
     mensagem += `%0A🔑 *Chave Pix (Copia e Cola):* ${chavePix}%0A`;
     mensagem += `%0A📷 *QR Code Pix:* ${pixURL}%0A`;
   }
