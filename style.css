@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #333333;
+  background-color: #333;
   margin: 0;
   padding: 0;
   color: #333;
@@ -8,29 +8,29 @@ body {
 
 .logo {
   display: block;
-  margin: 0 auto 10px auto;
-  max-width: 110px;
+  margin: 0 auto 10px;
+  max-width: 120px;
   height: auto;
 }
 
 .container {
   max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
+  margin: 1rem auto;
+  padding: 1.5rem;
   background-color: #ccc;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
 
 h1 { text-align: center; color: #000; margin-bottom: 0.2rem; }
 h1 small { font-weight: normal; font-size: 1rem; color: #000; display: block; margin-top: 4px; }
-h2 { margin-top: 2rem; color: #FF6400; }
+h2 { margin-top: 1.5rem; color: #FF6400; }
 
 form input, form select {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin: 0.5rem 0;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #333;
   font-size: 1rem;
   box-sizing: border-box;
@@ -43,25 +43,42 @@ form input, form select {
   flex-wrap: wrap;
 }
 
-#itensContainer select { flex: 1 1 60%; }
-#itensContainer input.quantidade { flex: 1 1 30%; min-width: 60px; }
+#itensContainer select { flex: 1 1 60%; font-size: 1rem; padding: 12px; }
+#itensContainer input.quantidade { flex: 1 1 30%; min-width: 60px; font-size: 1rem; padding: 12px; }
 
 button {
-  background-color: #27ae60;
-  color: whitesmoke;
   border: none;
-  padding: 12px;
-  width: 100%;
-  font-size: 16px;
   border-radius: 20px;
-  margin-top: 1rem;
+  padding: 14px;
+  font-size: 16px;
   cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
 }
 
-button:hover { background-color: #219150; }
-
-#adicionarItem { background-color: #3498db; }
+#adicionarItem {
+  background-color: #3498db;
+  color: #fff;
+}
 #adicionarItem:hover { background-color: #2980b9; }
+
+#finalizar {
+  background-color: #27ae60;
+  color: #fff;
+}
+#finalizar:hover { background-color: #219150; }
+
+#itensContainer button.removerItem {
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-top: 0.3rem;
+}
+#itensContainer button.removerItem:hover { background-color: #c0392b; }
 
 #total { margin-top: 1rem; font-size: 22px; font-weight: bold; text-align: center; color: #FF6400; }
 
